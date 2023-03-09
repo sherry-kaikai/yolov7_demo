@@ -5,7 +5,8 @@ pushd $top_dir
 
 #default config
 TARGET="BM1684"
-MODE="pcie_test"
+# MODE="pcie_test"
+MODE="compile_nntc"
 TPUID=0
 ALL_PASS=1
 
