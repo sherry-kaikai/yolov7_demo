@@ -1,3 +1,11 @@
+#===----------------------------------------------------------------------===#
+#
+# Copyright (C) 2022 Sophgo Technologies Inc.  All rights reserved.
+#
+# SOPHON-DEMO is licensed under the 2-Clause BSD License except for the
+# third-party components.
+#
+#===----------------------------------------------------------------------===#
 from logging import raiseExceptions
 from re import I
 import cv2
@@ -7,6 +15,11 @@ from ufwio.io import *
 import random
 import numpy as np
 import argparse
+
+os.chdir(os.path.abspath(os.path.dirname(sys.argv[0])))
+__dir__ = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(__dir__)
+
 
 def convertString2Bool(str):
     if str.lower() in {'true'}:
@@ -135,8 +148,9 @@ def preprocess_center(img, image_size):
     
     # pad
     padded_img_bgr = cv2.copyMakeBorder(img, ty1, ty2, tx1, tx2, cv2.BORDER_CONSTANT, value=(114, 114, 114))
-    # cv2.imwrite(os.path.join(
-    #     save_path, "padded_img_bgr_center.jpg"), padded_img_bgr)
+    
+    # cv2.imwrite("padded_img_bgr_center.jpg", padded_img_bgr)
+    # exit(1)
     
     # BGR => RGB
     padded_img_rgb = cv2.cvtColor(padded_img_bgr, cv2.COLOR_BGR2RGB)
@@ -171,7 +185,7 @@ def read_image(image_path, image_size):
 if __name__ == '__main__':
     parse = argparse.ArgumentParser(description='convert imageset')
     parse.add_argument('--imageset_rootfolder', type=str, default='../data/images/coco200', help = 'please setting images source path')
-    parse.add_argument('--imageset_lmdbfolder', type=str, default='../data/images/', help = 'please setting lmdb path')
+    parse.add_argument('--imageset_lmdbfolder', type=str, default='../data/images', help = 'please setting lmdb path')
     parse.add_argument('--shuffle', type=convertString2Bool, default=False, help = 'shuffle order of images')
     parse.add_argument('--image_size', type=int, default=640, help = 'target size')
     parse.add_argument('--bgr2rgb', type=convertString2Bool, default=True, help = 'convert bgr to rgb')
