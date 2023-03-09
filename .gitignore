@@ -1,5 +1,9 @@
 datasets/
 models/
 cpp/yolov7_bmcv/build
-scripts_old/core
-python_old/log
+scripts/yolov7*
+scripts/tmpdata/
+scripts/yolov7_cali_table/
+scripts/final_opt.onnx
+python/results/
+python/__*/

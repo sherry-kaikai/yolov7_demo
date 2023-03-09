@@ -25,7 +25,7 @@ function gen_mlir()
 function gen_cali_table()
 {
     run_calibration.py yolov7_v0.1_3output_$1b.mlir \
-        --dataset /workspace/sophon-demo/sample/YOLOv5/datasets/coco128 \
+        --dataset ../datasets/coco128 \
         --input_num 128 \
         -o yolov7_cali_table
 }
@@ -36,6 +36,7 @@ function gen_int8bmodel()         # --asymmetric \
         --mlir yolov7_v0.1_3output_$1b.mlir \
         --quantize INT8 \
         --chip $target \
+        --quantize_table yolov7_qtable \
         --calibration_table yolov7_cali_table \
         --model yolov7_v0.1_3output_int8_$1b.bmodel
 
@@ -48,7 +49,7 @@ if [ ! -d $outdir ]; then
 fi
 
 # batch_size=1
-# gen_mlir 1
+gen_mlir 1
 # if [ $? -eq 0 ]; then
 #     echo "Congratulation! step0: mlir 1 batch is done!"
 # else
@@ -56,7 +57,7 @@ fi
 #     popd
 #     exit -1
 # fi
-# gen_cali_table 1
+gen_cali_table 1
 # if [ $? -eq 0 ]; then
 #     echo "Congratulation! step1: mlir 1 batch is done!"
 # else
@@ -64,7 +65,7 @@ fi
 #     popd
 #     exit -1
 # fi
-# gen_int8bmodel 1
+gen_int8bmodel 1
 # if [ $? -eq 0 ]; then
 #     echo "Congratulation! mlir 1 batch is done!"
 # else
@@ -73,7 +74,7 @@ fi
 #     exit -1
 # fi
 # batch_size=4
-gen_mlir 4
+# gen_mlir 4
 # if [ $? -eq 0 ]; then
 #     echo "Congratulation! step1: mlir 4 batch is done!"
 # else
@@ -81,7 +82,7 @@ gen_mlir 4
 #     popd
 #     exit -1
 # # fi
-gen_cali_table 4
-gen_int8bmodel 4
+# gen_cali_table 4
+# gen_int8bmodel 4
 
 popd
