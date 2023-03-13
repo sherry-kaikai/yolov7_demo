@@ -74,7 +74,7 @@ gen_int8bmodel 1
 #     exit -1
 # fi
 # batch_size=4
-# gen_mlir 4
+gen_mlir 4
 # if [ $? -eq 0 ]; then
 #     echo "Congratulation! step1: mlir 4 batch is done!"
 # else
@@ -82,7 +82,7 @@ gen_int8bmodel 1
 #     popd
 #     exit -1
 # # fi
-# gen_cali_table 4
-# gen_int8bmodel 4
+gen_cali_table 4
+gen_int8bmodel 4
 
 popd

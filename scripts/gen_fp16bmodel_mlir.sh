@@ -24,7 +24,7 @@ function gen_fp16bmodel()
 {
     model_deploy.py \
         --mlir yolov7_v0.1_3output_$1b.mlir \
-        --quantize F16 \
+        --quantize BF16 \
         --chip $target \
         --model yolov7_v0.1_3output_fp16_$1b.bmodel
 

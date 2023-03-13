@@ -1,0 +1,15 @@
+# genetated time: 2023-02-23 22:59:11.101110
+# sample number: 128
+# all int8 loss: -15.079353426671807
+# chip: bm1684x  mix_mode: F32
+###
+# op_name   quantize_mode
+489_Conv F32
+507_Reshape F32
+output_Transpose F32
+509_Conv F32
+527_Reshape F32
+528_Transpose F32
+529_Conv F32
+547_Reshape F32
+548_Transpose F32
