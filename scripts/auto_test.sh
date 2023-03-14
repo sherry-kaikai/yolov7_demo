@@ -61,7 +61,15 @@ function compile_nntc()
   ./scripts/gen_int8bmodel_nntc.sh BM1684
   judge_ret $? "generate BM1684 int8bmodel"
 }
-
+function compile_mlir()
+{
+  ./scripts/gen_fp32bmodel_mlir.sh bm1684x
+  judge_ret $? "generate BM1684X fp32bmodel"
+  ./scripts/gen_int8bmodel_mlir.sh bm1684x
+  judge_ret $? "generate BM1684X int8bmodel"
+  ./scripts/gen_fp16bmodel_mlir.sh bm1684x
+  judge_ret $? "generate BM1684X fp16bmodel"
+}
 function build_pcie()
 {
   pushd cpp/yolov7_$1

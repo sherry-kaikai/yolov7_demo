@@ -31,7 +31,7 @@ function gen_fp32bmodel()
        --model="${root_dir}/models/torch/yolov7_v0.1_3outputs.torchscript.pt" \
        --outdir=${output_dir} \
        --dyn=false
-    mv ${output_dir}/compilation.bmodel ${output_dir}/yolov7_v0.1_3output_fp32_$1b.bmodel -rf
+    mv ${output_dir}/compilation.bmodel ${output_dir}/yolov7_v0.1_3output_fp32_$1b.bmodel
 }
 
 echo "start fp32bmodel transform, platform: ${platform}......"

@@ -13,7 +13,7 @@ function gen_mlir()
 {
     model_transform.py \
         --model_name yolov7_v0.1_3output \
-        --model_def ../models/onnx/yolov7_v0.1_3output.onnx \
+        --model_def ../models/onnx/yolov7_v0.1_3output_$1b.onnx \
         --input_shapes [[$1,3,640,640]] \
         --mlir yolov7_v0.1_3output_$1b.mlir
 }

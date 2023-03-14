@@ -15,7 +15,7 @@ function gen_mlir()
 {
     model_transform.py \
         --model_name yolov7_v0.1_3output \
-        --model_def ../models/onnx/yolov7_v0.1_3output.onnx \
+        --model_def ../models/onnx/yolov7_v0.1_3output_$1b.onnx \
         --input_shapes [[$1,3,640,640]] \
         --mlir yolov7_v0.1_3output_$1b.mlir
 }
@@ -38,5 +38,7 @@ fi
 # batch_size=1
 gen_mlir 1
 gen_fp16bmodel 1
-
+# batch_size=4
+gen_mlir 4
+gen_fp16bmodel 4
 popd
