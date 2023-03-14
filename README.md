@@ -181,12 +181,14 @@ bmrt_test --bmodel models/BM1684/yolov7_v0.1_3output_fp32_1b.bmodel
 | BM1684/yolov7_v0.1_3output_fp32_1b.bmodel  |  |
 | BM1684/yolov7_v0.1_3output_int8_1b.bmodel  |  |
 | BM1684/yolov7_v0.1_3output_int8_4b.bmodel  |  |
-| BM1684X/yolov7_v0.1_3output_fp32_1b.bmodel |  |
-| BM1684X/yolov7_v0.1_3output_fp16_1b.bmodel |  |
-| BM1684X/yolov7_v0.1_3output_int8_1b.bmodel |  |
-| BM1684X/yolov7_v0.1_3output_int8_4b.bmodel |  |
-| BM1684X/yolov7_v0.1_3output_fp16_1b.bmodel | |
-| BM1684X/yolov7_v0.1_3output_fp16_4b.bmodel | |
+| BM1684X/yolov7_v0.1_3output_fp32_1b.bmodel | 0.099467 |
+| BM1684X/yolov7_v0.1_3output_fp32_4b.bmodel | 0.09762575 |
+| BM1684X/yolov7_v0.1_3output_fp16_1b.bmodel | 0.023757 |
+| BM1684X/yolov7_v0.1_3output_fp16_4b.bmodel | 0.022555 |
+| BM1684X/yolov7_v0.1_3output_int8_1b.bmodel | 0.009990 |
+| BM1684X/yolov7_v0.1_3output_int8_4b.bmodel | 0.009547 |
+
+
 
 > **测试说明**：  
 1. 性能测试结果具有一定的波动性；
