@@ -1,5 +1,5 @@
 #!/bin/bash
-root_dir=$(dirname $(readlink -f "$0"))/..
+root_dir=$(cd `dirname $BASH_SOURCE[0]`/ && pwd)/..
 
 if [ ! $1 ]; then
     echo "Please set the target chip. Option: BM1684 and BM1684X"
@@ -9,12 +9,9 @@ else
 fi
 
 model_dir="${root_dir}/models/torch"
-output_dir="${root_dir}/models/${platform}"
+output_dir="${root_dir}/models/${target}"
 
-if [ ! -d $outdir ]; then
-    mkdir -p $outdir
-fi
-echo outdir is $outdir
+echo outdir is $output_dir
 
 function auto_cali()
 {
@@ -29,7 +26,7 @@ function auto_cali()
             --convert_bmodel_cmd_opt="-opt=2"   \
             --try_cali_accuracy_opt="-fpfwd_outputs=< 105 >86,< 105 >55,< 105 >18;-th_method=MSE;-conv_group=true;-per_channel=true;-accuracy_opt=true;-graph_transform=true;-iterations=200;-dump_dist=./calibration_use_pb_dump_dist;-load_dist=./calibration_use_pb_dump_dist" \
             --postprocess_and_calc_score_class=feature_similarity
-    mv ${model_dir}/yolov7_batch1/compilation.bmodel $outdir/yolov7_v0.1_3output_int8_1b.bmodel
+    cp ${model_dir}/yolov7_batch1/compilation.bmodel $outdir/yolov7_v0.1_3output_int8_1b.bmodel
 }
 
 function gen_int8bmodel()
@@ -40,16 +37,16 @@ function gen_int8bmodel()
            --shapes=[$1,3,640,640] \
            -target=$target \
            -opt=1
-    mv compilation/compilation.bmodel $outdir/yolov7_v0.1_3output_int8_$1b.bmodel
+    cp compilation/compilation.bmodel $outdir/yolov7_v0.1_3output_int8_$1b.bmodel
 }
 
-pushd $model_dir
-if [ ! -d $outdir ]; then
-    mkdir -p $outdir
+pushd $root_dir
+if [ ! -d $output_dir ]; then
+    mkdir -p $output_dir
 fi
 # batch_size=1
 auto_cali
-gen_int8bmodel 1
+#gen_int8bmodel 1
 # batch_size=4
 gen_int8bmodel 4
 
