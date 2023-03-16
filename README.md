@@ -144,10 +144,10 @@ chmod -R +x scripts/
 # 安装pycocotools，若已安装请跳过
 pip3 install pycocotools
 # 请根据实际情况修改程序路径和json文件路径
-python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017.json --result_json results/yolov7_v0.1_3output_fp32_1b.bmodel_val2017_opencv_python_result.json
+python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017_1000.json --result_json results/yolov7_v0.1_3output_fp32_1b.bmodel_val2017_opencv_python_result.json
 ```
 ### 6.2 测试结果
-在coco2017val数据集上，精度测试结果如下：
+在coco2017val_1000数据集上，精度测试结果如下：
 
 |   测试平台    |      测试程序     |              测试模型               | AP@IoU=0.5:0.95 | AP@IoU=0.5 |
 | ------------ | ---------------- | ----------------------------------- | ------------- | -------- |
@@ -157,9 +157,9 @@ python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017.json --resu
 | BM1684 PCIe  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel |  |  |
 | BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |
 | BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_int8_1b.bmodel |  |  |
-| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |
-| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp16_1b.bmodel |  |  |
-| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel |  |  |
+| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel | 0.514 | 0.699 |
+| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp16_1b.bmodel | 0.507 | 0.695 |
+| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel | 0.509 | 0.696 |
 
 > **测试说明**：  
 1. batch_size=4和batch_size=1的模型精度一致；
@@ -178,9 +178,10 @@ bmrt_test --bmodel models/BM1684/yolov7_v0.1_3output_fp32_1b.bmodel
 
 |                  测试模型                   | calculate time(ms) |
 | ------------------------------------------- | ----------------- |
-| BM1684/yolov7_v0.1_3output_fp32_1b.bmodel  |  |
-| BM1684/yolov7_v0.1_3output_int8_1b.bmodel  |  |
-| BM1684/yolov7_v0.1_3output_int8_4b.bmodel  |  |
+| BM1684/yolov7_v0.1_3output_fp32_1b.bmodel  | 0.083240 |
+| BM1684/yolov7_v0.1_3output_fp32_4b.bmodel  | 0.082036 |
+| BM1684/yolov7_v0.1_3output_int8_1b.bmodel  | 0.048883 |
+| BM1684/yolov7_v0.1_3output_int8_4b.bmodel  | 0.077643 |
 | BM1684X/yolov7_v0.1_3output_fp32_1b.bmodel | 0.099467 |
 | BM1684X/yolov7_v0.1_3output_fp32_4b.bmodel | 0.09762575 |
 | BM1684X/yolov7_v0.1_3output_fp16_1b.bmodel | 0.023757 |
