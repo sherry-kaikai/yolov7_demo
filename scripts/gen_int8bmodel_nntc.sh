@@ -26,7 +26,7 @@ function auto_cali()
             --convert_bmodel_cmd_opt="-opt=2"   \
             --try_cali_accuracy_opt="-fpfwd_outputs=< 105 >86,< 105 >55,< 105 >18;-th_method=MSE;-conv_group=true;-per_channel=true;-accuracy_opt=true;-graph_transform=true;-iterations=200;-dump_dist=./calibration_use_pb_dump_dist;-load_dist=./calibration_use_pb_dump_dist" \
             --postprocess_and_calc_score_class=feature_similarity
-    cp ${model_dir}/yolov7_batch1/compilation.bmodel $outdir/yolov7_v0.1_3output_int8_1b.bmodel
+    cp ${model_dir}/yolov7_batch1/compilation.bmodel $output_dir/yolov7_v0.1_3output_int8_1b.bmodel
 }
 
 function gen_int8bmodel()
@@ -37,7 +37,7 @@ function gen_int8bmodel()
            --shapes=[$1,3,640,640] \
            -target=$target \
            -opt=1
-    cp compilation/compilation.bmodel $outdir/yolov7_v0.1_3output_int8_$1b.bmodel
+    cp compilation/compilation.bmodel $output_dir/yolov7_v0.1_3output_int8_$1b.bmodel
 }
 
 pushd $root_dir
