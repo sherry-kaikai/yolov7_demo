@@ -289,9 +289,9 @@ int YoloV7::post_process(const std::vector<bm_image> &images, std::vector<YoloV7
       // std::cout<<"          which can reduce post process time, but forward time increases 1ms"<<std::endl;
       // std::cout<<std::endl;
       const std::vector<std::vector<std::vector<int>>> anchors{
-        {{10, 13}, {16, 30}, {33, 23}},
-          {{30, 61}, {62, 45}, {59, 119}},
-          {{116, 90}, {156, 198}, {373, 326}}};
+        {{12, 16}, {19, 36}, {40, 28}},
+          {{36, 75}, {76, 55}, {72, 146}},
+          {{142, 110}, {192, 243}, {459, 401}}};
       const int anchor_num = anchors[0].size();
       assert(output_num == (int)anchors.size());
       assert(box_num>0);

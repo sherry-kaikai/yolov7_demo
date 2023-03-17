@@ -180,15 +180,15 @@ then
     test_cpp pcie bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test_car_person_1080P.mp4
     test_cpp pcie bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test_car_person_1080P.mp4
 
-    eval_python opencv yolov7_v0.1_3output_fp32_1b.bmodel 0.3728494154948667
-    eval_python opencv yolov7_v0.1_3output_int8_1b.bmodel 0.3415060943647802
-    eval_python opencv yolov7_v0.1_3output_int8_4b.bmodel 0.3415060943647802
-    eval_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel 0.3627150044630879
-    eval_python bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.3302358654479303
-    eval_python bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.3302358654479303
-    eval_cpp pcie bmcv yolov7_v0.1_3output_fp32_1b.bmodel 0.35903516521721296
-    eval_cpp pcie bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.3317881837937532
-    eval_cpp pcie bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.3317881837937532
+    eval_python opencv yolov7_v0.1_3output_fp32_1b.bmodel 0.5141659367922798
+    eval_python opencv yolov7_v0.1_3output_int8_1b.bmodel 0.5054503987722289
+    eval_python opencv yolov7_v0.1_3output_int8_4b.bmodel 0.5054503987722289
+    eval_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel 0.49985099184064874
+    eval_python bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.49492075451801204
+    eval_python bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.49492075451801204
+    eval_cpp pcie bmcv yolov7_v0.1_3output_fp32_1b.bmodel 0.493618547647431
+    eval_cpp pcie bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.4865848847182539
+    eval_cpp pcie bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.4865848847182539
 
   elif test $TARGET = "BM1684X"
   then

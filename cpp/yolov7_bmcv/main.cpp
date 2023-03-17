@@ -23,10 +23,10 @@ int main(int argc, char *argv[]){
   // get params
   const char *keys="{bmodel | ../../models/BM1684/yolov7_v0.1_3output_fp32_1b.bmodel | bmodel file path}"
     "{dev_id | 0 | TPU device id}"
-    "{conf_thresh | 0.5 | confidence threshold for filter boxes}"
-    "{nms_thresh | 0.5 | iou threshold for nms}"
+    "{conf_thresh | 0.65 | confidence threshold for filter boxes}"
+    "{nms_thresh | 0.001 | iou threshold for nms}"
     "{help | 0 | print help information.}"
-    "{input | ../../datasets/test | input path, images direction or video file path}"
+    "{input | ../../datasets/coco/val2017_1000 | input path, images direction or video file path}"
     "{classnames | ../../datasets/coco.names | class names file path}";
   cv::CommandLineParser parser(argc, argv, keys);
   if (parser.get<bool>("help")) {

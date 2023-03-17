@@ -151,12 +151,12 @@ python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017_1000.json -
 
 |   测试平台    |      测试程序     |              测试模型               | AP@IoU=0.5:0.95 | AP@IoU=0.5 |
 | ------------ | ---------------- | ----------------------------------- | ------------- | -------- |
-| BM1684 PCIe  | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |
-| BM1684 PCIe  | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel |  |  |
-| BM1684 PCIe  | yolov7_bmcv.py   | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |
-| BM1684 PCIe  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel |  |  |
-| BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |
-| BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_int8_1b.bmodel |  |  |
+| BM1684 PCIe  | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel | 0.514 | 0.699 |
+| BM1684 PCIe  | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel | 0.505 | 0.696 |
+| BM1684 PCIe  | yolov7_bmcv.py   | yolov7_v0.1_3output_fp32_1b.bmodel | 0.500 | 0.682 |
+| BM1684 PCIe  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel | 0.495 | 0.682  |
+| BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_fp32_1b.bmodel | 0.494 | 0.696 |
+| BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_int8_1b.bmodel | 0.487 | 0.691 |
 | BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel | 0.514 | 0.699 |
 | BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp16_1b.bmodel | 0.507 | 0.695 |
 | BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel | 0.509 | 0.696 |

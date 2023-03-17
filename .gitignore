@@ -8,3 +8,4 @@ scripts/final_opt.onnx
 python/results/
 python/__*/
 tools/temp.json
+cpp/yolov7_bmcv/results
