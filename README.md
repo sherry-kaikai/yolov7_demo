@@ -215,13 +215,13 @@ bmrt_test --bmodel models/BM1684/yolov7_v0.1_3output_fp32_1b.bmodel
 | BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_4b.bmodel | 13.469 | 7.349 | 77.204 | 81.145 |
 | BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
-| BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |
+| BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_fp16_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_bmcv.py   | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
-| BM1684X SoC | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |
+| BM1684X SoC | yolov7_bmcv.py   | yolov7_v0.1_3output_fp16_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_bmcv.soc  | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
-| BM1684X SoC | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |
+| BM1684X SoC | yolov7_bmcv.soc  | yolov7_v0.1_3output_fp16_1b.bmodel |  |  |  |  |
 
 
 > **测试说明**：  

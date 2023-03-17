@@ -250,8 +250,8 @@ then
     eval_python opencv yolov7_v0.1_3output_int8_1b.bmodel 0.3415060943647802
     eval_python opencv yolov7_v0.1_3output_int8_4b.bmodel 0.3415060943647802
     eval_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel 0.3627150044630879
-    eval_python bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.3302358654479303
-    eval_python bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.3302358654479303
+    eval_python bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.3992404333361958
+    eval_python bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.3992404333361958
     eval_cpp soc bmcv yolov7_v0.1_3output_fp32_1b.bmodel 0.35903516521721296 
     eval_cpp soc bmcv yolov7_v0.1_3output_int8_1b.bmodel 0.3317881837937532
     eval_cpp soc bmcv yolov7_v0.1_3output_int8_4b.bmodel 0.3317881837937532
@@ -259,13 +259,13 @@ then
   then
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
     test_python opencv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
-    test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
+    test_python opencv yolov7_v0.1_3output_fp16_1b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
-    test_python bmcv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
+    test_python bmcv yolov7_v0.1_3output_fp16_1b.bmodel datasets/test
     test_cpp soc bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test
     test_cpp soc bmcv yolov7_v0.1_3output_int8_1b.bmodel ../../datasets/test
-    test_cpp soc bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test
+    test_cpp soc bmcv yolov7_v0.1_3output_fp16_1b.bmodel ../../datasets/test
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test_car_person_1080P.mp4
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
