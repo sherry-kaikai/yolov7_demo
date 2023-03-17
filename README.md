@@ -125,7 +125,6 @@ chmod -R +x scripts/
 > 1. 制作lmdb量化数据集时，通过convert_imageset.py完成数据的预处理；
 > 2. 尝试不同的iterations进行量化可能得到较明显的精度提升；
 > 3. 最后一层conv到输出之间层之间设置为fp32，可能得到较明显的精度提升；
->
 > 4. 尝试采用不同优化策略，比如：图优化、卷积优化，可能会得到较明显精度提升。
 
 ## 5. 例程测试
@@ -205,15 +204,15 @@ bmrt_test --bmodel models/BM1684/yolov7_v0.1_3output_fp32_1b.bmodel
 
 |    测试平台  |     测试程序      |             测试模型                | decode_time | preprocess_time | inference_time | postprocess_time |
 | ----------- | ---------------- | ----------------------------------- | -------- | --------- | --------- | --------- |
-| BM1684 SoC  | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_opencv.py | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_bmcv.py   | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
-| BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |
+| BM1684 SoC  | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel | 21.20 | 29.69 | 94.13 | 118.35 |
+| BM1684 SoC  | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel | 19.80 | 23.83 | 70.83 | 110.97 |
+| BM1684 SoC  | yolov7_opencv.py | yolov7_v0.1_3output_int8_4b.bmodel | 19.85 | 25.09 | 43.18 | 154.96 |
+| BM1684 SoC  | yolov7_bmcv.py   | yolov7_v0.1_3output_fp32_1b.bmodel | 1.80 | 3.15 | 88.86 | 110.85 |
+| BM1684 SoC  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel | 1.76 | 2.58 | 54.85 | 111.21 |
+| BM1684 SoC  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_4b.bmodel | 1.73 | 2.41 | 24.49 | 124.76 |
+| BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_fp32_1b.bmodel | 13.613| 1.920 | 82.888 | 20.474 |
+| BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_1b.bmodel | 13.687 | 1.895 | 48.742 | 20.055 |
+| BM1684 SoC  | yolov7_bmcv.soc  | yolov7_v0.1_3output_int8_4b.bmodel | 13.469 | 7.349 | 77.204 | 81.145 |
 | BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel |  |  |  |  |
 | BM1684X SoC | yolov7_opencv.py | yolov7_v0.1_3output_int8_4b.bmodel |  |  |  |  |

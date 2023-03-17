@@ -119,12 +119,12 @@ function eval_cpp()
   if [ ! -d log ];then
     mkdir log
   fi
-  ./yolov7_$2.$1 --input=../../datasets/coco/val2017 --bmodel=../../models/$TARGET/$3 --conf_thresh=0.001 --nms_thresh=0.6 --dev_id $TPUID > log/$1_$2_$3_debug.log 2>&1
-  judge_ret $? "./yolov7_$2.$1 --input=../../datasets/coco/val2017 --bmodel=../../models/$TARGET/$3 --conf_thresh=0.001 --nms_thresh=0.6 --dev_id $TPUID > log/$1_$2_$3_debug.log 2>&1"
+  ./yolov7_$2.$1 --input=../../datasets/coco/val2017_1000 --bmodel=../../models/$TARGET/$3 --conf_thresh=0.001 --nms_thresh=0.6 --dev_id $TPUID > log/$1_$2_$3_debug.log 2>&1
+  judge_ret $? "./yolov7_$2.$1 --input=../../datasets/coco/val2017_1000 --bmodel=../../models/$TARGET/$3 --conf_thresh=0.001 --nms_thresh=0.6 --dev_id $TPUID > log/$1_$2_$3_debug.log 2>&1"
   echo "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-  echo "python3 ../../tools/eval_coco.py --gt_path ../../datasets/coco/instances_val2017.json --result_json results/$3_val2017_$2_cpp_result.json 2>&1 | tee log/$1_$2_$3_eval.log"
+  echo "python3 ../../tools/eval_coco.py --gt_path ../../datasets/coco/instances_val2017_1000.json --result_json results/$3_val2017_1000_$2_cpp_result.json 2>&1 | tee log/$1_$2_$3_eval.log"
   echo "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-  res=$(python3 ../../tools/eval_coco.py --gt_path ../../datasets/coco/instances_val2017.json --result_json results/$3_val2017_$2_cpp_result.json 2>&1 | tee log/$1_$2_$3_eval.log)
+  res=$(python3 ../../tools/eval_coco.py --gt_path ../../datasets/coco/instances_val2017_1000.json --result_json results/$3_val2017_1000_$2_cpp_result.json 2>&1 | tee log/$1_$2_$3_eval.log)
   array=(${res//=/ })
   acc=${array[1]}
   compare_res $acc $4
@@ -142,12 +142,12 @@ function eval_python()
   if [ ! -d python/log ];then
     mkdir python/log
   fi
-  python3 python/yolov7_$1.py --input datasets/coco/val2017 --bmodel models/$TARGET/$2 --dev_id $TPUID --conf_thresh 0.001 --nms_thresh 0.6 > python/log/$1_$2_debug.log 2>&1
-  judge_ret $? "python3 python/yolov7_$1.py --input datasets/coco/val2017 --bmodel models/$TARGET/$2 --dev_id $TPUID --conf_thresh 0.001 --nms_thresh 0.6 > python/log/$1_$2_debug.log 2>&1"
+  python3 python/yolov7_$1.py --input datasets/coco/val2017_1000 --bmodel models/$TARGET/$2 --dev_id $TPUID --conf_thresh 0.001 --nms_thresh 0.6 > python/log/$1_$2_debug.log 2>&1
+  judge_ret $? "python3 python/yolov7_$1.py --input datasets/coco/val2017_1000 --bmodel models/$TARGET/$2 --dev_id $TPUID --conf_thresh 0.001 --nms_thresh 0.6 > python/log/$1_$2_debug.log 2>&1"
   echo "------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-  echo "python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017.json --result_json results/$2_val2017_$1_python_result.json 2>&1 | tee python/log/$1_$2_eval.log"
+  echo "python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017_1000.json --result_json results/$2_val2017_1000_$1_python_result.json 2>&1 | tee python/log/$1_$2_eval.log"
   echo "------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-  res=$(python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017.json --result_json results/$2_val2017_$1_python_result.json 2>&1 | tee python/log/$1_$2_eval.log)
+  res=$(python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017_1000.json --result_json results/$2_val2017_1000_$1_python_result.json 2>&1 | tee python/log/$1_$2_eval.log)
   array=(${res//=/ })
   acc=${array[1]}
   compare_res $acc $3
@@ -168,17 +168,18 @@ then
   if test $TARGET = "BM1684"
   then
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python opencv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
-    test_python bmcv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
+    test_python bmcv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_cpp pcie bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test
-    test_cpp pcie bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test
+    test_cpp pcie bmcv yolov7_v0.1_3output_int8_1b.bmodel ../../datasets/test
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
-    test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test_car_person_1080P.mp4
+    test_python opencv yolov7_v0.1_3output_int8_1b.bmodel datasets/test_car_person_1080P.mp4
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
-    test_python bmcv yolov7_v0.1_3output_int8_4b.bmodel datasets/test_car_person_1080P.mp4
+    test_python bmcv yolov7_v0.1_3output_int8_1b.bmodel datasets/test_car_person_1080P.mp4
     test_cpp pcie bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test_car_person_1080P.mp4
-    test_cpp pcie bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test_car_person_1080P.mp4
+    test_cpp pcie bmcv yolov7_v0.1_3output_int8_1b.bmodel ../../datasets/test_car_person_1080P.mp4
 
     eval_python opencv yolov7_v0.1_3output_fp32_1b.bmodel 0.5141659367922798
     eval_python opencv yolov7_v0.1_3output_int8_1b.bmodel 0.5054503987722289
@@ -193,10 +194,13 @@ then
   elif test $TARGET = "BM1684X"
   then
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python opencv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python bmcv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_cpp pcie bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test
+    test_cpp pcie bmcv yolov7_v0.1_3output_int8_1b.bmodel ../../datasets/test
     test_cpp pcie bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test_car_person_1080P.mp4
@@ -227,10 +231,13 @@ then
   if test $TARGET = "BM1684"
   then
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python opencv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python bmcv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_cpp soc bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test
+    test_cpp soc bmcv yolov7_v0.1_3output_int8_1b.bmodel ../../datasets/test
     test_cpp soc bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test_car_person_1080P.mp4
@@ -251,10 +258,13 @@ then
   elif test $TARGET = "BM1684X"
   then
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python opencv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test
+    test_python bmcv yolov7_v0.1_3output_int8_1b.bmodel datasets/test
     test_python bmcv yolov7_v0.1_3output_int8_4b.bmodel datasets/test
     test_cpp soc bmcv yolov7_v0.1_3output_fp32_1b.bmodel ../../datasets/test
+    test_cpp soc bmcv yolov7_v0.1_3output_int8_1b.bmodel ../../datasets/test
     test_cpp soc bmcv yolov7_v0.1_3output_int8_4b.bmodel ../../datasets/test
     test_python opencv yolov7_v0.1_3output_fp32_1b.bmodel datasets/test_car_person_1080P.mp4
     test_python opencv yolov7_v0.1_3output_int8_4b.bmodel datasets/test_car_person_1080P.mp4
