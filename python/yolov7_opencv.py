@@ -339,7 +339,7 @@ def main(args):
 
 def argsparser():
     parser = argparse.ArgumentParser(prog=__file__)
-    parser.add_argument('--input', type=str, default='../datasets/coco/val2017', help='path of input')
+    parser.add_argument('--input', type=str, default='../datasets/coco/val2017_1000', help='path of input')
     parser.add_argument('--bmodel', type=str, default='../models/BM1684X/yolov7_v0.1_3output_int8_1b.bmodel', help='path of bmodel')
     parser.add_argument('--dev_id', type=int, default=0, help='dev id')
     parser.add_argument('--conf_thresh', type=float, default=0.5, help='confidence threshold')

@@ -156,9 +156,9 @@ python3 tools/eval_coco.py --gt_path datasets/coco/instances_val2017_1000.json -
 | BM1684 PCIe  | yolov7_bmcv.py   | yolov7_v0.1_3output_int8_1b.bmodel | 0.495 | 0.682  |
 | BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_fp32_1b.bmodel | 0.494 | 0.696 |
 | BM1684 PCIe  | yolov7_bmcv.pcie | yolov7_v0.1_3output_int8_1b.bmodel | 0.487 | 0.691 |
-| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel | 0.514 | 0.699 |
+| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp32_1b.bmodel | 0.513 | 0.699 |
 | BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_fp16_1b.bmodel | 0.507 | 0.695 |
-| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel | 0.509 | 0.696 |
+| BM1684X PCIe | yolov7_opencv.py | yolov7_v0.1_3output_int8_1b.bmodel | 0.508 | 0.696 |
 
 > **测试说明**：  
 1. batch_size=4和batch_size=1的模型精度一致；
