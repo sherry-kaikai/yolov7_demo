@@ -30,13 +30,13 @@ function gen_cali_table()
         -o yolov7_cali_table
 }
 
-function gen_int8bmodel()         # --asymmetric \
+function gen_int8bmodel()
 {
     model_deploy.py \
         --mlir yolov7_v0.1_3output_$1b.mlir \
         --quantize INT8 \
         --chip $target \
-        --quantize_table yolov7_qtable \
+        --quantize_table ../models/onnx/yolov7_qtable \
         --calibration_table yolov7_cali_table \
         --model yolov7_v0.1_3output_int8_$1b.bmodel
 
@@ -50,38 +50,11 @@ fi
 
 # batch_size=1
 gen_mlir 1
-# if [ $? -eq 0 ]; then
-#     echo "Congratulation! step0: mlir 1 batch is done!"
-# else
-#     echo "step0 Something is wrong, pleae have a check!"
-#     popd
-#     exit -1
-# fi
 gen_cali_table 1
-# if [ $? -eq 0 ]; then
-#     echo "Congratulation! step1: mlir 1 batch is done!"
-# else
-#     echo "step1 Something is wrong, pleae have a check!"
-#     popd
-#     exit -1
-# fi
 gen_int8bmodel 1
-# if [ $? -eq 0 ]; then
-#     echo "Congratulation! mlir 1 batch is done!"
-# else
-#     echo "gen int8bmodel_1batch Something is wrong, pleae have a check!"
-#     popd
-#     exit -1
-# fi
+
 # batch_size=4
 gen_mlir 4
-# if [ $? -eq 0 ]; then
-#     echo "Congratulation! step1: mlir 4 batch is done!"
-# else
-#     echo "Something is wrong, pleae have a check!"
-#     popd
-#     exit -1
-# # fi
 gen_cali_table 4
 gen_int8bmodel 4
 

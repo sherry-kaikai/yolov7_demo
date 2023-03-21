@@ -36,14 +36,7 @@ fi
 # batch_size=1
 gen_mlir 1
 gen_fp32bmodel 1
-
+# batch_size=4
 gen_mlir 4
-if [ $? -eq 0 ]; then
-    echo "Congratulation! step1: mlir 4 batch is done!"
-else
-    echo "Something is wrong, pleae have a check!"
-    popd
-    exit -1
-fi
 gen_fp32bmodel 4
 popd
